@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.my.flow.FlowMapper">
+	<insert id="insert" parameterType="Flow">
+		insert into flow(file_extension) 
+		select #{file_extension} from dual 
+		where not exists(select * from flow where flow.file_extension = #{file_extension})
+	</insert>
+	
+	<update id="update">
+		UPDATE flow
+		SET file_extension = #{file_extension}
+		WHERE file_num = #{file_num}
+	</update>
+	
+	<update id="updateRemoveyn">
+		UPDATE flow
+		SET file_check = 'y'
+		WHERE file_num = #{file_num}
+	</update>
+	
+	<update id="updateRemoveyn2">
+		UPDATE flow
+		SET file_check = 'n'
+		WHERE file_num = #{file_num}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM flow
+		WHERE file_extension = #{file_extension}
+	</delete>
+	
+	<select id="deleteAll">
+		DELETE FROM flow
+		WHERE file_check is NULL
+	</select>
+	
+	<select id="selectList" resultType="Flow">
+		select * from flow
+		order by file_num asc
+	</select>
+	
+	<select id="selectTotalCnt" resultType="int">
+		SELECT COUNT(*) totalCnt FROM flow
+	</select>
+	
+</mapper>  
