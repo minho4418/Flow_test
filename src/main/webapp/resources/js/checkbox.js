@@ -28,6 +28,8 @@ const add = (total_num,e, path) => {
 	e.preventDefault();
 	let file_extension = document.getElementById('file_extension');
 	let remove_file = document.getElementsByName('remove_file');
+	let kor = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$/; 
+	let Asterisk = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
 	
 	for(let i =0; i<remove_file.length; i++){
 		if(remove_file[i].value === file_extension.value){
@@ -39,6 +41,10 @@ const add = (total_num,e, path) => {
 	if (file_extension.value == '' ){
 		file_extension.focus();
 		alert('확장자를 입력하세요!');
+	}
+	else if (kor.test(file_extension.value) || Asterisk.test(file_extension.value)){
+		file_extension.focus();
+		alert('형식에 맞지 않는 확장자 입니다!');
 	}
 	else if (file_extension.value.length > 20 ){
 		file_extension.focus();

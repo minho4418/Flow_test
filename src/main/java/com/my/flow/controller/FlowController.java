@@ -26,26 +26,14 @@ public class FlowController {
 		@Autowired
 		private FlowService flowService;
 		
-		//가입폼으로 이동
-		@RequestMapping(value = "join", method = RequestMethod.GET)
-		public String add() {
-			//forward => /WEB-INF/views/add.jsp
-			//return "forward:/WEB-INF/views/add.jsp";
-			//리졸버에 의해서 view이름만 작성
-			return "add";
-		}
-		//가입버튼을 눌렀을때
-		//파라메터를 dto에 settint 해준다
-		
-		
 		//리스트로 이동
 		@RequestMapping("/")
-		public String list() {
-			return "list";
+		public String home() {
+			return "home";
 		}
 		
 		//조회를 눌렀을때(데이터조회후 list로 이동)
-		@RequestMapping("/list")
+		@RequestMapping("list")
 		public void list(Model model) {
 			List<Flow> flist = flowService.selectList();
 			logger.info(flist.toString());

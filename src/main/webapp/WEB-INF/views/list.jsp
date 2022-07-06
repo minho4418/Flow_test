@@ -6,7 +6,6 @@
 <head>
 	<title>Home</title>
 	<script type="text/javascript" src="${path}/resources/js/checkbox.js"></script>
-	<script src ="${path}/resources/js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <hr>
