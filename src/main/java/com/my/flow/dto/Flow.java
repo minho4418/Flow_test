@@ -4,6 +4,13 @@ public class Flow {
 	private int file_num;
 	private String file_extension;
 	private String file_check;
+	private int state;
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public String getFile_check() {
 		return file_check;
 	}
@@ -24,6 +31,7 @@ public class Flow {
 	}
 	@Override
 	public String toString() {
-		return "Flow [file_num=" + file_num + ", file_extension=" + file_extension + ", file_check=" + file_check + "]";
+		return "Flow [file_num=" + file_num + ", file_extension=" + file_extension + ", file_check=" + file_check
+				+ ", state=" + state + "]";
 	}
 }
