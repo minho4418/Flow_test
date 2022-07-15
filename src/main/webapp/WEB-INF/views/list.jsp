@@ -24,11 +24,11 @@
 					<td><c:forEach var="flow" items="${flist}" varStatus="status">
 							<c:set var="file_check" value="${flow.file_check}"></c:set>
 							<c:if test="${not empty file_check}"> <!-- file_check가 null인 경우 제외 -->
-								<c:if test="${file_check eq 'n'}">
+								<c:if test="${file_check eq 'n' || state eq '0'}">
 									<input type="checkbox" onclick="removeCheck(event,'${path}')" name="file_num" value="${flow.file_num}" >
 								</c:if>
-								<c:if test="${file_check eq 'y'}">
-									<input type="checkbox" onclick="removeCheck2(event,'${path}')" name="file_num" value="${flow.file_num}" checked/>
+								<c:if test="${file_check eq 'y' || state eq '1'}">
+									<input type="checkbox" onclick="removeCheck2(event,'${path}')" name="file_num2" value="${flow.file_num}" checked/>
 								</c:if>
 								${flow.file_extension}
 							</c:if>
