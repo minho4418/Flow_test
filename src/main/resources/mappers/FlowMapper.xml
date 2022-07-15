@@ -18,13 +18,13 @@
 	
 	<update id="updateRemoveyn">
 		UPDATE flow
-		SET file_check = 'y'
-		WHERE file_num = #{file_num}
+		SET file_check = 'y', state = state + 1
+		WHERE file_num = #{file_num} 
 	</update>
 	
 	<update id="updateRemoveyn2">
 		UPDATE flow
-		SET file_check = 'n'
+		SET file_check = 'n', state = state - 1
 		WHERE file_num = #{file_num}
 	</update>
 
