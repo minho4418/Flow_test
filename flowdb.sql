@@ -49,7 +49,7 @@ where not exists(select * from flow where flow.file_extension = 'aaa');
 
 SELECT COUNT(*) totalCnt FROM flow where file_check is null;
 
-
+alter table flow add column state int(10) unsigned;
 
 DELETE FROM flow
 		WHERE file_check is NULL;
