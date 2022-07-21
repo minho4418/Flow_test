@@ -2,10 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <c:set var="path" value="${pageContext.request.contextPath}"/> 
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 	<title>Home</title>
+	<script type="text/javascript" src="${path}/resources/js/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="${path}/resources/js/checkbox.js"></script>
+	<link rel="stylesheet" href="${path}/resources/css/Throttling.css">
 </head>
 <body>
 <hr>
@@ -14,10 +18,10 @@
 	</header>
 	<hr>
 	<nav>
-		<div>
-			파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한
-		</div>
-		<div>
+		
+		<h4>파일확장자에 따라 특정 형식의 파일을 첨부하거나 전송하지 못하도록 제한</h4>
+		
+		<div id=throttle class="example-box">
 			<table>
 				<tr>
 					<td>고정 확장자</td>
@@ -38,14 +42,14 @@
 				<tr>
 					<td>커스텀 확장자</td>
 					<td><input type="text" placeholder="확장자 입력" id="file_extension" value="${file_extension}"> 
-					<button onclick="add(${total-7},event,'${path}')" >+추가</button> <button onclick="deleteAll(event,'${path}')">전체 삭제</button></td>
-					
+					<button onclick="add(${total-7},event,'${path}')" >+추가</button> <button onclick="deleteAll(event,'${path}')">전체 삭제</button></td>	
 				</tr>
 				
 				<tr>
 					<td></td>
 					<td>
-						<div style="border:1px solid; padding:10px;">${total-7}/200 <br>
+					<div class="scroll-box">
+						<div class="inner" style="border:1px solid; padding:10px;">${total-7}/200 <br>
 							<c:forEach var="flow" items="${flist}" varStatus="status">
 							<c:set var="file_check" value="${flow.file_check}" ></c:set>
 								<c:if test="${empty file_check}">
@@ -54,11 +58,15 @@
 									</div>
 								</c:if>
 							</c:forEach>
+        					<p class="counter">스크롤 이벤트 실행 횟수: <span class="count">0</span></p>
 						</div>
+					</div>  
 					</td>
+					
 				</tr>
 			</table>
 		</div>
-	</nav>
+		<script type="text/javascript" src="${path}/resources/js/Throttling.js"></script>
+</nav>
 </body>
 </html>
